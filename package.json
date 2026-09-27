@@ -1,0 +1,25 @@
+{
+  "name": "vn-safepost-copilot",
+  "version": "1.0.0",
+  "description": "Privacy-first Chrome extension guardrail assistant for Facebook posts in Vietnam.",
+  "type": "module",
+  "scripts": {
+    "lint": "node --check popup/popup.js && node --check core/i18n.js && node --check core/case-corpus.js && node --check core/rules.js && node --check core/gemini.js && node --check core/corpus-matcher.js && node --check content/content.js && node --check background/background.js && node --check offscreen/offscreen.js && python3 -m json.tool manifest.json > /dev/null && python3 -m json.tool core/case-corpus.json > /dev/null",
+    "test": "node --test tests/**/*.test.js"
+  },
+  "keywords": [
+    "chrome-extension",
+    "facebook",
+    "vietnam",
+    "cybersecurity-law",
+    "privacy",
+    "gemini",
+    "manifest-v3"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

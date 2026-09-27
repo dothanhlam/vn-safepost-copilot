@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VN SafePost Copilot</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main class="popup" role="dialog" aria-label="VN SafePost Copilot settings">
+    <header class="popup__header">
+      <img src="../assets/icons/icon48.png" alt="" class="popup__logo" />
+      <div>
+        <h1 class="popup__title">VN SafePost Copilot</h1>
+        <p class="popup__subtitle" data-i18n="popupSubtitle">Trợ lý an toàn &amp; tuân thủ cho mạng xã hội</p>
+      </div>
+    </header>
+
+    <section class="popup__section">
+      <label for="language" class="popup__label" data-i18n="languageLabel">Ngôn ngữ</label>
+      <select id="language" class="popup__input popup__input--select">
+        <option value="vi">Tiếng Việt</option>
+        <option value="en">English</option>
+      </select>
+    </section>
+
+    <section class="popup__section">
+      <label for="apiKey" class="popup__label">
+        <span data-i18n="apiKeyLabel">Gemini API Key</span>
+        <span class="popup__hint popup__hint--inline" data-i18n="optional">(tùy chọn)</span>
+        <span class="popup__hint" data-i18n="apiKeyHint">Lưu cục bộ trong trình duyệt. Không rồi khỏi thiết bị. Chỉ cần cho phân tích AI Tier 2.</span>
+      </label>
+      <input
+        id="apiKey"
+        type="password"
+        class="popup__input"
+        data-i18n-placeholder="apiKeyPlaceholder"
+        placeholder="Dán Gemini API key để bật phân tích AI Tier 2"
+        autocomplete="off"
+      />
+      <div class="popup__row">
+        <label class="popup__toggle">
+          <input id="showKey" type="checkbox" />
+          <span data-i18n="showKey">Hiện key</span>
+        </label>
+        <a
+          href="https://aistudio.google.com/app/apikey"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="popup__link"
+          data-i18n="getKey"
+        >Lấy key</a>
+      </div>
+      <p class="popup__note" data-i18n="apiKeyNote">
+        Không cần key, SafePost vẫn chạy regex cục bộ (Tier 1) và so khớp corpus cục bộ (Tier 1.5) ngoại tuyến.
+      </p>
+    </section>
+
+    <section class="popup__section">
+      <label for="sensitivity" class="popup__label">
+        <span data-i18n="sensitivityLabel">Độ nhạy</span>:
+        <strong id="sensitivityValue">Trung bình</strong>
+      </label>
+      <input
+        id="sensitivity"
+        type="range"
+        class="popup__range"
+        min="1"
+        max="3"
+        step="1"
+        value="2"
+      />
+      <div class="popup__range-labels" aria-hidden="true">
+        <span data-i18n="sensitivityLow">Thấp</span>
+        <span data-i18n="sensitivityMedium">Trung bình</span>
+        <span data-i18n="sensitivityHigh">Cao</span>
+      </div>
+    </section>
+
+    <section class="popup__section">
+      <label class="popup__toggle popup__toggle--large">
+        <input id="detectAiContent" type="checkbox" checked />
+        <span class="popup__toggle-track" aria-hidden="true"></span>
+        <span data-i18n="detectAiContentLabel">Cảnh báo nội dung AI</span>
+      </label>
+      <p class="popup__note" data-i18n="detectAiContentNote">
+        Phát hiện dấu hiệu văn bản được tạo bởi AI hoặc không ghi nhãn AI/Deepfake.
+      </p>
+    </section>
+
+    <section class="popup__section">
+      <label class="popup__toggle popup__toggle--large">
+        <input id="enabled" type="checkbox" checked />
+        <span class="popup__toggle-track" aria-hidden="true"></span>
+        <span data-i18n="enabledLabel">Bật quét SafePost</span>
+      </label>
+    </section>
+
+    <footer class="popup__footer">
+      <button id="save" class="popup__button" type="button" data-i18n="saveButton">Lưu cài đặt</button>
+      <p id="status" class="popup__status" role="status" aria-live="polite"></p>
+    </footer>
+  </main>
+
+  <script src="../core/i18n.js"></script>
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
